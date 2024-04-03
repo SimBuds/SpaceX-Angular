@@ -1,4 +1,15 @@
 <div *ngIf="mission">
-    <h2>{{ mission.mission_name }} Details</h2>
-    <!-- Display the details -->
+    <button mat-button (click)="goBack()" style="position: fixed; top: 10px; left: 10px;">Back</button>
+    <div class="mission-card">
+        <img mat-card-image [src]="mission.links.mission_patch_small" alt="Mission Patch">
+        <div class="mission-content">
+          <h2>Mission Details</h2>
+          <h3>{{ mission.mission_name }}</h3>
+          <p>Flight Number: {{ mission.flight_number }}</p>
+          <p>Launch Year: {{ mission.launch_year }}</p>
+          <p>Upcoming: {{ mission.upcoming ? 'Yes' : 'No' }}</p>
+          <p>Rocket Name: {{ mission.rocket.rocket_name }}</p>
+          <p>Rocket Type: {{ mission.rocket.rocket_type }}</p>
+        </div>
+    </div>
 </div>

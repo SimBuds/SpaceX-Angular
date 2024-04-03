@@ -1,5 +1,25 @@
-<div *ngFor="let mission of missions">
-    <h2>{{ mission.mission_name }} ({{ mission.launch_year }})</h2>
-    <p>{{ mission.details }}</p>
-    <img [src]="mission.links.mission_patch_small" alt="Mission Patch">
+<mat-toolbar color="primary" class="launch-toolbar">
+    <h1>SpaceX Mission Launch List</h1>
+    <span class="toolbar-spacer"></span>
+    <mat-form-field appearance="fill">
+      <mat-label>Filter by Year</mat-label>
+      <mat-select [(value)]="filterYear" (selectionChange)="onFilterChange()">
+        <mat-option *ngFor="let year of availableYears" [value]="year">
+          {{ year }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-button color="accent" (click)="resetFilter()">Reset Filter</button>
+</mat-toolbar>
+
+<div class="mission-container">
+  <mat-card *ngFor="let mission of filteredMissions" class="mission-card" (click)="goToMissionDetails(mission.flight_number)">
+      <img mat-card-image src="{{ mission.links.mission_patch_small }}" alt="Mission Patch">
+      <mat-card-content>
+        <h2>{{ mission.mission_name }}</h2>
+        <p>Launch Year: {{ mission.launch_year }}</p>
+        <p>{{ mission.details }}</p>
+      </mat-card-content>
+    </mat-card>
 </div>
+  

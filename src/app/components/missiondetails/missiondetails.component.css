@@ -1,0 +1,42 @@
+.mission-card {
+    margin: 5px;
+    background-color: #f4f4f4;
+    color: #000;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center the text */
+}
+
+.mission-card .mission-content h2 {
+    color: #000;
+    text-align: center;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.mission-card .mission-content h3 {
+    color: #000;
+    padding: 5px;
+}
+
+.mission-card .mission-content p {
+    color: #000;
+    padding: 5px;
+}
+
+.mission-card img[mat-card-image] {
+    width: 300px; /* Set image width to 300px */
+    height: 300px; /* Set image height to 300px */
+    display: block; /* Center the image */
+    margin: 0 auto; /* Center the image */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+button[mat-button] {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background-color: blue;
+}

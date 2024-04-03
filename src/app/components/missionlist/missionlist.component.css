@@ -1,0 +1,36 @@
+
+.launch-toolbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #0d47a1;
+    color: #fff;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.year-filter {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.mission-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+    padding: 10px;
+}
+
+.mission-card {
+    margin: 10px;
+    align-items: center;
+    color: #fff; /* Changed font color to white */
+}
+
+img {
+    width: 100%;
+    height: auto;
+}

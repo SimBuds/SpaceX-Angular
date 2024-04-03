@@ -1,4 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SpaceXService } from '../../services/spacex.service';
+import { Mission } from '../../models/mission';
 
 @Component({
   selector: 'app-missiondetails',
@@ -6,10 +9,29 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./missiondetails.component.css']
 })
 export class MissiondetailsComponent implements OnInit {
-  @Input() mission: any;
+  mission?: Mission;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private spaceXService: SpaceXService,
+    public router: Router
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      const flightNumber = params['flight_number'];
+      this.spaceXService.getMissionByFlightNumber(flightNumber).subscribe(
+        (data) => {
+          this.mission = data;
+        },
+        (error) => {
+          console.error('Failed to get mission details:', error);
+        }
+      );
+    });
+  }
+
+  goBack() {
+    this.router.navigate(['/missions']);
   }
 }

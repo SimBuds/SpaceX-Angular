@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Mission } from '../models/mission';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpaceXService {
-  private baseUrl: string = 'https://api.spacexdata.com/v3/launches';
+  private apiUrl = 'https://api.spacexdata.com/v3/launches';
 
   constructor(private http: HttpClient) { }
 
-  getLaunches(): Observable<any> {
-    return this.http.get<any[]>(this.baseUrl);
+  getMissions(): Observable<Mission[]> {
+    return this.http.get<Mission[]>(this.apiUrl);
   }
 
-  getLaunchesByYear(year: string): Observable<any> {
-    return this.http.get<any[]>(`${this.baseUrl}?launch_year=${year}`);
+  getMissionByFlightNumber(flightNumber: string): Observable<Mission> {
+    const url = `${this.apiUrl}/${flightNumber}`;
+    return this.http.get<Mission>(url);
   }
 }
